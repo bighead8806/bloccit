@@ -7,6 +7,7 @@ module RandomData
  
      sentences.join(" ")
    end
+   
    def self.random_sentence
      strings = []
      rand(3..8).times do
@@ -16,6 +17,7 @@ module RandomData
      sentence = strings.join(" ")
      sentence.capitalize << "."
    end
+   
    def self.random_word
      letters = ('a'..'z').to_a
      letters.shuffle!
