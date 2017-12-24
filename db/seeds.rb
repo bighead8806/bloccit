@@ -16,5 +16,5 @@ require 'random_data'
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  
- Post.find_or_create_by(title: "Unique title for the assignment", body: "This is a unique thing.");
- Comment.find_or_create_by(title: "This is a unique comment!", body: "This comment will not appear in other places.");
+ uniquePost = Post.find_or_create_by(title: "Unique title for the assignment", body: "This is a unique thing.");
+ Comment.find_or_create_by(post: "uniquePost", body: "This comment will not appear in other places.");
