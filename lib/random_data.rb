@@ -1,5 +1,4 @@
 module RandomData
- # #6
    def self.random_paragraph
      sentences = []
      rand(4..6).times do
@@ -9,7 +8,6 @@ module RandomData
      sentences.join(" ")
    end
  
- # #7
    def self.random_sentence
      strings = []
      rand(3..8).times do
@@ -19,13 +17,14 @@ module RandomData
      sentence = strings.join(" ")
      sentence.capitalize << "."
    end
- 
- # #8
+   
    def self.random_word
      letters = ('a'..'z').to_a
      letters.shuffle!
      letters[0,rand(3..8)].join
-     
-       config.autoload_paths << File.join(config.root, "lib")
    end
+   
+   def self.random_integer
+    rand(1...100)
+   end 
 end
