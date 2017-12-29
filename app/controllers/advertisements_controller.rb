@@ -4,7 +4,7 @@ class AdvertisementsController < ApplicationController
   end
 
   def show
-    @advertisement = advertisement.find(params[:id])
+    @advertisement = Advertisement.find(params[:id])
   end
 
   def new
@@ -21,7 +21,7 @@ class AdvertisementsController < ApplicationController
       flash[:notice] = "Advertisement was saved."
       redirect_to @advertisement
     else
-      flash[:error] = "There was an error saving the advertisement. Please try again"
+      flash[:now] = "There was an error saving the advertisement. Please try again"
       render :new
      end
   end
