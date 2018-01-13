@@ -21,4 +21,4 @@ require 'random_data'
  uniquePost = Post.find_or_create_by(title: "Unique title for the assignment", body: "This is a unique thing.");
  puts "#{Post.count}"
  
- Comment.find_or_create_by(post: "uniquePost", body: "This comment will not appear in other places.");
+ Comment.find_or_create_by(post: uniquePost, body: "This comment will not appear in other places.");
