@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    @posts = each_with_index do |post, index|
+    @posts.each_with_index do |post, index|
       if index % 5 == 0
         post.title = "SPAM"
       end 
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+      @post = Post.find(params[:id])
   end
 
   def new
@@ -29,5 +30,6 @@ class PostsController < ApplicationController
    end
 
   def edit
+    @post = Post.find(params[:id])
   end
 end
