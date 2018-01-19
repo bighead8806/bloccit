@@ -51,7 +51,7 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   
-   describe "GET edit" do
+    describe "GET edit" do
      it "returns http success" do
        get :edit, params: { id: my_post.id }
        expect(response).to have_http_status(:success)
@@ -73,7 +73,7 @@ RSpec.describe PostsController, type: :controller do
      end
    end
    
-    describe "PUT update" do
+   describe "PUT update" do
      it "updates post with expected attributes" do
        new_title = RandomData.random_sentence
        new_body = RandomData.random_paragraph
@@ -92,33 +92,6 @@ RSpec.describe PostsController, type: :controller do
  
        put :update, params: { id: my_post.id, post: {title: new_title, body: new_body } }
        expect(response).to redirect_to my_post
-     end
-   end
-   
-    def update
-     @post = Post.find(params[:id])
-     @post.title = params[:post][:title]
-     @post.body = params[:post][:body]
- 
-     if @post.save
-       flash[:notice] = "Post was updated."
-       redirect_to @post
-     else
-       flash.now[:alert] = "There was an error saving the post. Please try again."
-       render :edit
-     end
-    end
-    
-      describe "DELETE destroy" do
-     it "deletes the post" do
-       delete :destroy, params: { id: my_post.id }
-       count = Post.where({id: my_post.id}).size
-       expect(count).to eq 0
-     end
- 
-     it "redirects to posts index" do
-       delete :destroy, params: { id: my_post.id }
-       expect(response).to redirect_to posts_path
      end
    end
 end
