@@ -61,19 +61,18 @@ end
 
   describe 'POST #create' do
     it 'increased the number of Advertisement by 1' do
-        expect{ post :create, 
-        params: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer }}.to change(Advertisement, :count).by(1)
+        expect{ post :create, params: {advertisement: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer }}}.to change(Advertisement, :count).by(1)
     end
 
     it 'assigns the new advertisement to @advertisement' do
       post :create, 
-      params: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer}
+      params: {advertisement: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer}}
       expect(assigns(:advertisement)).to eq Advertisement.last
     end
 
     it 'it redirects to the new advertisement' do
       post :create,
-      params: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer }
+      params: {advertisement: { title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_integer }}
       expect(response).to redirect_to Advertisement.last
     end
   end
