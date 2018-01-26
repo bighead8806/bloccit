@@ -94,4 +94,17 @@ RSpec.describe PostsController, type: :controller do
        expect(response).to redirect_to my_post
      end
    end
+   
+    describe "DELETE destroy" do
+     it "deletes the post" do
+       delete :destroy, params: { topic_id: my_topic.id, id: my_post.id }
+       count = Post.where({id: my_post.id}).size
+       expect(count).to eq 0
+     end
+      
+     it "redirects to topic show" do
+       delete :destroy, params: { topic_id: my_topic.id, id: my_post.id }
+       expect(response).to redirect_to my_topic
+     end 
+    end 
 end
