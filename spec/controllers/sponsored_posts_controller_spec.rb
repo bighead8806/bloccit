@@ -3,8 +3,7 @@ include RandomData
 
 RSpec.describe SponsoredPostsController, type: :controller do
     let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)}
-    let(:sponsored_post) { my_topic.sponsored_posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: RandomData
-    .random_price)}
+    let(:sponsored_post) { my_topic.sponsored_posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: RandomData.random_price)}
     
     describe "GET show" do
      it "returns http success" do
@@ -45,7 +44,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
      end
  
      it "renders the #edit view" do
-       get :edit, topic_id: my_topic.id, id: sponsored_post.id
+       get :edit, params: {topic_id: my_topic.id, id: sponsored_post.id}
        expect(response).to render_template :edit
      end
  

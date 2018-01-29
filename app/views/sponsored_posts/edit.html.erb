@@ -1,21 +1,32 @@
-describe "GET edit" do
-     it "returns http success" do
-       get :edit, params: { topic_id: my_topic.id, id: sponsored_post.id }
-       expect(response).to have_http_status(:success)
-     end
+ <h1>Edit Sponsored Post</h1>
  
-     it "renders the #edit view" do
-       get :edit, topic_id: my_topic.id, id: sponsored_post.id
-       expect(response).to render_template :edit
-     end
- 
-     it "assigns sponsored_post to be updated to @sponsored_post" do
-       get :edit, params: { topic_id: my_topic.id, id: sponsored_post.id }
-       sponsored_instance = assigns(:sponsored_post)
- 
-       expect(sponsored_instance.id).to eq sponsored_post.id
-       expect(sponsored_instance.title).to eq sponsored_post.title
-       expect(sponsored_instance.body).to eq sponsored_post.body
-     end
-   end
+ <div class="row">
+   <div class="col-md-4">
+     <p>Guidelines for sponsored posts</p>
+     <ul>
+       <li>Make sure it is an awesome sponsored post.</li>
+       <li>Don't make it a non-awesome sponsored post.</li>
+       <li>I like awesome things; so make it awesome.</li>
+     </ul>
+   </div>
+   <div class="col-md-8">
+     <%= form_for [@sponsored_post.topic, @sponsored_post] do |f| %>
+       <div class="form-group">
+         <%= f.label :title %>
+         <%= f.text_field :title, class: 'form-control', placeholder: "Enter sponsored post title." %>
+       </div>
+       <div class="form-group">
+         <%= f.label :body %>
+         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter sponsored post body." %>
+       </div>
+       <div class="form-group">
+         <%= f.label :price %>
+         <%= f.number_field :price, class: 'form-control', placeholder: "Enter price for the sponsored post." %>
+       </div>
+       <div class="form-group">
+         <%= f.submit "Save", class: 'btn btn-success' %>
+       </div>
+     <% end %>
+   </div>
+ </div>
    

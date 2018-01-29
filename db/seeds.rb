@@ -6,7 +6,8 @@ require 'random_data'
    body: RandomData.random_paragraph,
    price: RandomData.random_price
    )
-  end
+ end
+ sponsored_posts = SponsoredPost.all 
 
  15.times do
    Topic.create!(
