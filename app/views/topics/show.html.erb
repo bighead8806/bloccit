@@ -19,7 +19,7 @@
          </div>
        </div>
      <% end %>
-      <%= link_to "New Sponsored Post", topic_sponsored_post_path(@topic), class: 'btn btn-success' %>
+      <%= link_to "New Sponsored Post", new_topic_sponsored_post_path(@topic), class: 'btn btn-success' %>
     <% @topic.sponsored_posts.each do |sponsored_post| %>
       <div class="media">
         <div class="media-body">
