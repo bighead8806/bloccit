@@ -22,6 +22,7 @@ class TopicsController < ApplicationController
      else
        flash.now[:alert] = "Error creating topic. Please try again."
        render :new
+       binding.pry
      end
     end
     
@@ -43,6 +44,7 @@ class TopicsController < ApplicationController
        flash.now[:alert] = "Error saving topic. Please try again."
        render :edit
      end
+     binding.pry
     end
     
     def destroy
