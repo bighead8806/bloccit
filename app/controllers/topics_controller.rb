@@ -17,12 +17,11 @@ class TopicsController < ApplicationController
      @topic.description = params[:topic][:description]
      @topic.public = params[:topic][:public]
  
-     if @topic.save
+     if @topic.save!
        redirect_to @topic, notice: "Topic was saved successfully."
      else
        flash.now[:alert] = "Error creating topic. Please try again."
        render :new
-       binding.pry
      end
     end
     
@@ -44,7 +43,6 @@ class TopicsController < ApplicationController
        flash.now[:alert] = "Error saving topic. Please try again."
        render :edit
      end
-     binding.pry
     end
     
     def destroy
