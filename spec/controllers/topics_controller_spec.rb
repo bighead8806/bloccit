@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
-    let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)}
+    let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph, public: true)}
+    
  
     describe "GET index" do
      it "returns http success" do
@@ -66,6 +67,7 @@ RSpec.describe TopicsController, type: :controller do
        expect(topic_instance.id).to eq my_topic.id
        expect(topic_instance.name).to eq my_topic.name
        expect(topic_instance.description).to eq my_topic.description
+       expect(topic_instance.public).to eq my_topic.public
      end
    end
    
@@ -74,19 +76,20 @@ RSpec.describe TopicsController, type: :controller do
        new_name = RandomData.random_sentence
        new_description = RandomData.random_paragraph
  
-       put :update, params: { id: my_topic.id, topic: { name: new_name, description: new_description } }
+       put :update, params: { id: my_topic.id, topic: { name: new_name, description: new_description, public: true } }
  
        updated_topic = assigns(:topic)
        expect(updated_topic.id).to eq my_topic.id
        expect(updated_topic.name).to eq new_name
        expect(updated_topic.description).to eq new_description
+       expect(updated_topic.public).to eq true
      end
  
      it "redirects to the updated topic" do
        new_name = RandomData.random_sentence
        new_description = RandomData.random_paragraph
  
-       put :update, params: { id: my_topic.id, topic: { name: new_name, description: new_description } }
+       put :update, params: { id: my_topic.id, topic: { name: new_name, description: new_description, public: true } }
        expect(response).to redirect_to my_topic
      end
    end
